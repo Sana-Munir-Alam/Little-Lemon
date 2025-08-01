@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const nodemailer = require('nodemailer');
+// const nodemailer = require('nodemailer');
 const { body, validationResult } = require('express-validator');
 
 // Initialize Express app
@@ -100,13 +100,13 @@ Reservation.schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 // ======================
 // Email Configuration
 // ======================
-const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE || 'Gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
+// const transporter = nodemailer.createTransport({
+//   service: process.env.EMAIL_SERVICE || 'Gmail',
+//   auth: {
+//     user: process.env.EMAIL_USER,
+//     pass: process.env.EMAIL_PASS
+//   }
+// });
 
 // ======================
 // API Endpoints

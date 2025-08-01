@@ -57,7 +57,7 @@ Creates a new reservation.
 Example request body:
 
 ```json
-{
+"{
   "date": "2025-08-01",
   "time": "18:00",
   "diningArea": "Patio",
@@ -79,11 +79,11 @@ OR
   "contactMethod": "email",
   "email": "",
   "phone": "1234567890"
-}
+}"
 
-### `GET /api/reservations?email=john@example.com`  
-### `GET /api/reservations?phone=1234567890`  
+`GET /api/reservations?email=john@example.com`  
+`GET /api/reservations?phone=1234567890`  
 Returns the most recent reservations associated with the provided email or phone number (up to 10 entries).
 
-### `DELETE /api/reservations/:id` *(optional)*  
+`DELETE /api/reservations/:id` *(optional)*  
 This delete a reservation using its MongoDB Object ID.

@@ -24,6 +24,29 @@ All reservation data is handled via RESTful API calls and persisted in MongoDB u
 - Reservations auto-expire 2 hours after their scheduled time using MongoDB TTL indexing
 - Environment variables used for security and sensitive configuration
 
+---
+s
+## Technology Stack
+
+- **Frontend**: React, JSX, CSS Modules
+- **Backend**: Express.js, Node.js
+- **Database**: MongoDB with Mongoose
+- **Validation**: express-validator
+- **Security**: Helmet, CORS, express-rate-limit
+
+---
+
+## Auto-Expiration of Reservations
+
+Reservations are set to **automatically expire two hours after the scheduled time**. This is managed using:
+
+- MongoDB's **TTL (Time-To-Live) index**, or
+- A **server-side cleanup** function that removes outdated entries.
+
+This keeps the reservation system clean and performant.
+
+---
+
 ## API Endpoints
 
 All API routes are prefixed with `/api/reservations`.
@@ -64,24 +87,3 @@ Returns the most recent reservations associated with the provided email or phone
 
 ### `DELETE /api/reservations/:id` *(optional)*  
 This delete a reservation using its MongoDB Object ID.
-
----
-
-## Technology Stack
-
-- **Frontend**: React, JSX, CSS Modules
-- **Backend**: Express.js, Node.js
-- **Database**: MongoDB with Mongoose
-- **Validation**: express-validator
-- **Security**: Helmet, CORS, express-rate-limit
-
----
-
-## Auto-Expiration of Reservations
-
-Reservations are set to **automatically expire two hours after the scheduled time**. This is managed using:
-
-- MongoDB's **TTL (Time-To-Live) index**, or
-- A **server-side cleanup** function that removes outdated entries.
-
-This keeps the reservation system clean and performant.

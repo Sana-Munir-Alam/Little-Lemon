@@ -15,7 +15,11 @@ const app = express();
 // ======================
 app.use(helmet());
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000'
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:3000',
+    'https://your-frontend-app.onrender.com' // Add your Render frontend URL here
+  ],
+  credentials: true
 }));
 
 const limiter = rateLimit({

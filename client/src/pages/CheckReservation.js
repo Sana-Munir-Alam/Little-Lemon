@@ -49,7 +49,7 @@ const CheckReservation = () => {
     
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3001/api/reservations/${reservationToCancel._id}`, {
+      const response = await fetch(`/api/reservations/${reservationToCancel._id}`, {
         method: 'DELETE'
       });
       
@@ -102,7 +102,7 @@ const CheckReservation = () => {
         ? `email=${trimmedValue}` 
         : `phone=${trimmedValue.replace(/\D/g, '')}`;
 
-      const response = await fetch(`http://localhost:3001/api/reservations?${query}`);
+      const response = await fetch(`/api/reservations?${query}`);
       const data = await response.json();
 
       if (data.length === 0) {

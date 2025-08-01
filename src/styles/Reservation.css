@@ -1,0 +1,368 @@
+/* === CSS VARIABLES === */
+:root {
+  /* Colors */
+  --primary-green: #495E57;
+  --primary-yellow: #F4CE14;
+  --secondary-yellow: #e5b71385;
+  --error-red: #ff5b5b;
+  --success-green: #15ff00;
+  --gray-light: #ccc;
+  --gray-medium: #888;
+  --gray-dark: #333;
+  --white: #fff;
+  --black: #000;
+  --overlay: rgba(0,0,0,0.6);
+
+  /* Fonts */
+  --heading-font: 'Markazi Text', serif;
+  --body-font: 'Karla', sans-serif;
+
+  /* Spacing */
+  --section-padding: 3rem 2rem;
+  --card-gap: 2rem;
+  --input-padding: 0.7rem;
+  --button-padding: 0.8rem 1rem;
+
+  /* Borders */
+  --border-radius-sm: 0.5rem;
+  --border-radius-md: 1rem;
+  --border-radius-lg: 20px;
+
+  /* Shadows */
+  --button-hover-scale: scale(0.97);
+}
+
+/* === BASE STYLES === */
+.reservationSection {
+  font-family: var(--body-font);
+  color: var(--gray-dark);
+  background-color: var(--white);
+  padding-bottom: 2rem;
+}
+
+.reservation-heading {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; 
+  background-color: var(--primary-green);
+  color: var(--primary-yellow);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  gap: 1rem; 
+}
+
+.reservation-title {
+  margin: 0 auto;
+}
+
+.check-reservation-btn {
+  background: gold;
+  color: black;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap; /* Prevents button text from breaking */
+}
+.check-reservation-btn:hover{
+  background-color: #e5b71385;
+  transform: var(--button-hover-scale);
+}
+/* Grid Wrapper */
+.form-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Mobile default */
+  gap: var(--card-gap);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form Section */
+.form-section {
+  grid-column: span 4;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: var(--primary-green);
+  padding: var(--section-padding);
+  border-radius: var(--border-radius-lg);
+  justify-content: center;
+}
+
+.form-section h3 {
+  font-size: 2.5rem;
+  color: var(--primary-yellow);
+  padding-bottom: 1rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--gray-medium);
+  z-index: 0;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #bababa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  background-color: var(--primary-green);
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+}
+
+.circle.active {
+  background-color: var(--primary-yellow);
+  border-color: var(--primary-yellow);
+  color: var(--black);
+}
+
+.circle.complete {
+  background-color: var(--success-green);
+  color: var(--black);
+}
+
+.ReserveLabel {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--white);
+}
+
+/* Inputs & Selects */
+.form-wrapper input,
+.form-wrapper select {
+  padding: var(--input-padding);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--gray-light);
+  width: 100%;
+  font-size: 1rem;
+}
+
+/* Button Group */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.button-group button {
+  flex: 1;
+  padding: var(--button-padding);
+  font-size: 1rem;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Button Styles */
+.cancel-btn {
+  background-color: var(--error-red);
+  color: var(--white);
+}
+
+.cancel-btn:hover {
+  background-color: var(--gray-medium);
+  transform: var(--button-hover-scale);
+}
+
+.back-btn {
+  background-color: var(--gray-medium);
+  color: var(--white);
+}
+
+.back-btn:hover {
+  background-color: #777;
+  transform: var(--button-hover-scale);
+}
+
+.next-btn,
+.confirm-btn {
+  background-color: var(--primary-yellow);
+  color: var(--black);
+  font-weight: bold;
+}
+
+.next-btn:hover,
+.confirm-btn:hover {
+  background-color: var(--secondary-yellow);
+  transform: var(--button-hover-scale);
+}
+
+/* Image Section */
+.image-section {
+  display: none;
+  height: 350px;
+}
+
+.image-section img {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  object-fit: cover;
+  height: 100%;
+}
+
+/* Error Message */
+.error {
+  color: var(--error-red);
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Popup */
+.popupRes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: var(--white);
+  padding: 2rem;
+  max-width: 400px;
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.popup-content button {
+  margin-top: 1rem;
+  background-color: var(--primary-green);
+  color: var(--white);
+  padding: var(--button-padding);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+}
+
+.Subscription {
+  color: var(--primary-yellow);
+}
+
+/* Checkbox Styles */
+.ReservationCheckbox {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 0.85rem;
+  color: var(--white);
+  margin-top: 1rem;
+  max-width: 400px;
+  margin-left: -2em;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.checkbox-label p {
+  margin-left: -6em;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-top: 0.2rem;
+  transform: scale(1.1);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .reservation-heading {
+    justify-content: center; /* Centers items when stacked */
+    text-align: center;
+  }
+  .reservation-title {
+    margin: 0; /* Reset margin for mobile */
+    width: 100%; /* Forces title to take full width */
+  }
+  .check-reservation-btn {
+    margin-top: 0.5rem; /* Adds space between title and button */
+  }
+}
+
+/* ============ RESPONSIVE ADJUSTMENTS ============ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .form-wrapper {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .form-section {
+    grid-column: span 5;
+  }
+
+  .image-section {
+    grid-column: span 3;
+    display: block;
+  }
+
+  /* Step-specific tweaks */
+  .step-1 { margin-top: 1.8rem; }
+  .step-2 { margin-top: 1.9rem; }
+  .step-3 { margin-top: 6.5em; }
+  .step-4 { margin-top: 13.5em; }
+
+  .ReservationCheckbox {
+    margin-left: -4em;
+  }
+  .checkbox-label p {
+    margin-left: -4em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .form-wrapper {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+  }
+
+  .form-section {
+    grid-column: span 6;
+  }
+
+  .image-section {
+    grid-column: span 6;
+    display: block;
+  }
+
+  /* Step-specific tweaks */
+  .step-1 { margin-top: 1.8rem; }
+  .step-2 { margin-top: 1.9rem; }
+  .step-3 { margin-top: 6.5em; }
+  .step-4 { margin-top: 13.5em; }
+}
+
+@media (max-width: 450px) {
+  .ReservationCheckbox {
+    margin-left: -4em;
+  }
+  .checkbox-label p {
+    margin-left: -4em;
+  }
+}

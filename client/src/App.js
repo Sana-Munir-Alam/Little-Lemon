@@ -48,7 +48,8 @@ function CheckReservationPage(){
 }
 function App() {
   return (
-    <Router>
+    // This basename="/" was added right after succesful deployment
+     <Router basename="/">
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />

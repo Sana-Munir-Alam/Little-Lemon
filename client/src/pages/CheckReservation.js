@@ -172,7 +172,7 @@ const CheckReservation = () => {
         />
       </div>
 
-      <button onClick={handleSearch} className="search-check-button" disabled={isLoading}>{isLoading ? 'Searching...' : 'Search'}</button>
+      <button onClick={handleSearch} className="search-check-button" disabled={isLoading} aria-busy={isLoading}>{isLoading ? 'Searching...' : 'Search'}</button>
 
       {error && <p className="error-message-check">{error}</p>}
           
@@ -214,14 +214,14 @@ const CheckReservation = () => {
               <>
                 <p>Are you sure you want to cancel this reservation?</p>
                 <div className="modal-buttons-container">
-                  <button onClick={handleCancelReservation} className="confirm-button-check" disabled={isLoading}>
+                  <button onClick={handleCancelReservation} className="confirm-button-check" disabled={isLoading} aria-busy={isLoading}>
                     {isLoading ? 'Processing...' : 'Yes, Cancel'}
                   </button>
                   <button 
                     onClick={() => {
                       setShowCancelModal(false);
                       setReservationToCancel(null);
-                    }} className="close-button-check" disabled={isLoading}>
+                    }} className="close-button-check" disabled={isLoading} aria-busy={isLoading}>
                     No, Keep It
                   </button>
                 </div>

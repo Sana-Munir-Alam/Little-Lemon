@@ -27,15 +27,15 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="testimonials-section">
-      <h2>From Our Guests With Love</h2>
+    <section id="testimonials" className="testimonials-section" aria-labelledby="testimonials-heading">
+      <h2 id="testimonials-heading">From Our Guests With Love</h2>
       <p className="testimonial-sub">
         From first bites to final sips—hear from those who’ve dined with us.
       </p>
-      <div className="testimonial-cards">
+      <div className="testimonial-cards" role="list">
         {testimonials.map((item, index) => (
           <div className="testimonial-card" key={index}>
-            <div className="stars">{"★".repeat(item.stars)}</div>
+            <div className="stars" aria-label="Star Ratings">{"★".repeat(item.stars)}</div>
             <p className="testimonial-text">"{item.text}"</p>
             <div className="testimonial-user">
               <img src={item.image} alt={item.name} />

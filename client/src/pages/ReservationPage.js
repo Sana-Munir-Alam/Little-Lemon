@@ -136,7 +136,7 @@ const Reservation = () => {
   };
 
   return (
-    <section className="reservationSection">
+    <section className="reservationSection" aria-labelledby='Reservation Section'>
       <div className="reservation-heading">
         <h2 className="reservation-title">Reservation</h2>
         <button onClick={() => navigate('/check-reservation')} className="check-reservation-btn">
@@ -153,6 +153,8 @@ const Reservation = () => {
                 className={`circle 
                   ${step > num || (num === 4 && confirmed) ? 'complete' : ''} 
                   ${step === num && !confirmed ? 'active' : ''}`}
+                  aria-label={`Step ${num}`}
+                  aria-current={step === num ? "step" : undefined}
               >
                 {(step > num || (num === 4 && confirmed)) ? '✔' : num}
               </span>
@@ -170,6 +172,8 @@ const Reservation = () => {
                 min={new Date().toISOString().split('T')[0]} 
                 onChange={handleChange} 
                 required
+                aria-describedby={errors.date ? "Date-error" : undefined}
+                aria-invalid={!!errors.date}
               />
               {errors.date && <p className="error">{errors.date}</p>}
             </>
@@ -187,6 +191,8 @@ const Reservation = () => {
                 max="23:00" 
                 onChange={handleChange}
                 required
+                aria-describedby={errors.time ? "Time-error" : undefined}
+                aria-invalid={!!errors.time}
               />
               {errors.time && <p className="error">{errors.time}</p>}
             </>
@@ -219,6 +225,8 @@ const Reservation = () => {
                 min="1"
                 max="12"
                 required
+                aria-describedby={errors.numberOfSeats ? "NumberOfSeats-error" : undefined}
+                aria-invalid={!!errors.numberOfSeats}
               />
               {errors.numberOfSeats && <p className="error">{errors.numberOfSeats}</p>}
             </>
@@ -235,6 +243,8 @@ const Reservation = () => {
                 value={formData.firstName} 
                 onChange={handleChange} 
                 required
+                aria-describedby={errors.firstName ? "firstName-error" : undefined}
+                aria-invalid={!!errors.firstName}
               />
               {errors.firstName && <p className="error">{errors.firstName}</p>}
               <label className="ReserveLabel">Last Name:</label>
@@ -245,6 +255,8 @@ const Reservation = () => {
                 value={formData.lastName} 
                 onChange={handleChange} 
                 required
+                aria-describedby={errors.lastName ? "LastName-error" : undefined}
+                aria-invalid={!!errors.lastName}
               />
               {errors.lastName && <p className="error">{errors.lastName}</p>}
               <label className="ReserveLabel">Mode of Contact:</label>
@@ -253,6 +265,8 @@ const Reservation = () => {
                 value={formData.contactMethod} 
                 onChange={handleChange}
                 required
+                aria-describedby={errors.contactMethod ? "COntactMethod-error" : undefined}
+                aria-invalid={!!errors.contactMethod}
               >
                 <option value="">Preferred Contact</option>
                 <option value="email">Email</option>
@@ -270,6 +284,8 @@ const Reservation = () => {
                     value={formData.email} 
                     onChange={handleChange} 
                     required
+                    aria-describedby={errors.email ? "Email-error" : undefined}
+                    aria-invalid={!!errors.email}
                   />
                   {errors.email && <p className="error">{errors.email}</p>}
                 </>
@@ -285,6 +301,8 @@ const Reservation = () => {
                     onChange={handlePhoneChange} 
                     maxLength={12}
                     required
+                    aria-describedby={errors.phone ? "Phone-error" : undefined}
+                    aria-invalid={!!errors.phone}
                   />
                   {errors.phone && <p className="error">{errors.phone}</p>}
                 </>
@@ -332,7 +350,7 @@ const Reservation = () => {
       </div>
 
       {showPopup && (
-        <div className="popupRes">
+        <div className="popupRes" role="alert">
           <div className="popup-content">
             <h3>Reservation Confirmed!</h3>
             <p>Your booking ID: <strong>{bookingId}</strong></p>

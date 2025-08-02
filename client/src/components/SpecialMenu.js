@@ -16,8 +16,8 @@ const SpecialMenu = () => {
   };
 
   return (
-    <section id="special" className="special-menu">
-      <h2>Our Special for Summer Season</h2>
+    <section id="special" className="special-menu" aria-labelledby="special-menu-heading">
+      <h2 id="special-menu-heading">Our Special for Summer Season</h2>
       <div className="menu-items">
         {[
           {

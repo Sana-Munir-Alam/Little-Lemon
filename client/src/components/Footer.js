@@ -52,24 +52,17 @@ function Footer() {
     <footer id="footers" className="footer">
       <div className="footer-container centered-footer">
         {/* Logo + Newsletter */}
-        <div className="footer-newsletter">
-          <img
-            src="https://meta-capstone-project.netlify.app/static/media/llr-logo.370f832fad423c516d56.png"
-            alt="Little Lemon Logo"
-            className="footer-logo"
-          />
+        <section className="footer-newsletter" aria-labelledby="newsletter-heading">
+          <img src="https://meta-capstone-project.netlify.app/static/media/llr-logo.370f832fad423c516d56.png" alt="Little Lemon Logo" className="footer-logo"/>
+
           <p className="newsletter-text">
             Join our newsletter to stay up to date on features and releases.
           </p>
 
           {/* FORM */}
           <form className="newsletter-form" onSubmit={handleSubmit} noValidate>
-            <input
-              type="email"
-              placeholder="yourname@example.com"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <label >Email: <input type="email" placeholder="yourname@gmail.com" value={email} onChange={(e) => setEmail(e.target.value)}/></label>
+            
             <button type="submit" className="submission">Subscribe</button>
           </form>
 
@@ -101,37 +94,37 @@ function Footer() {
           {success && (
             <p className="success-text">{success}</p>
           )}
-        </div>
+        </section>
 
         {/* Navigation, Contact, Socials remain unchanged */}
         <div className="footer-links">
           <div>
-            <h4>Navigation</h4>
+            <h4 id="navigation-heading">Navigation</h4>
             <ul>
-              <li><button onClick={() => navigate("/")}>Home</button></li>
-              <li><button onClick={() => handleFooterNavClick("about")}>About</button></li>
-              <li><button onClick={() => navigate("/menu")}>Menu</button></li>
-              <li><button onClick={() => handleFooterNavClick("testimonials")}>Review</button></li>
-              <li><button onClick={() => handleFooterNavClick("special")}>Special</button></li>
-              <li><button onClick={() => navigate("/reservation")}>Reservation</button></li>
+              <li><button onClick={() => navigate("/")} aria-label="Go to home page">Home</button></li>
+              <li><button onClick={() => handleFooterNavClick("about")} aria-label="Go to about section">About</button></li>
+              <li><button onClick={() => navigate("/menu")} aria-label="View our Menu">Menu</button></li>
+              <li><button onClick={() => handleFooterNavClick("testimonials")} aria-label="Read Customer Reviews">Review</button></li>
+              <li><button onClick={() => handleFooterNavClick("special")} aria-label="View our special offers">Special</button></li>
+              <li><button onClick={() => navigate("/reservation")} aria-label="Make a reservation">Reservation</button></li>
             </ul>
           </div>
 
           <div>
-            <h4>Contact</h4>
+            <h4 id="contact-heading">Contact</h4>
             <p><b>Email:</b><br/>Littlelemon@example.com</p>
             <p><b>Address:</b><br/>Chicago, Illinois, USA</p>
             <p><b>Phone:</b><br/>+1 234-567-9032</p>
           </div>
 
           <div>
-            <h4>Follow Us</h4>
+            <h4 id="social-heading">Follow Us</h4>
             <ul className="social-links">
-              <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer"><img src={facebookIcon} alt="Facebook" /></a></li>
-              <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer"><img src={instagramIcon} alt="Instagram" /> </a></li>
-              <li><a href="https://www.twitter.com" target="_blank" rel="noreferrer"><img src={twitterIcon} alt="Twitter" /> </a></li>
-              <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer"><img src={linkedinIcon} alt="LinkedIn" /> </a></li>
-              <li><a href="https://www.youtube.com" target="_blank" rel="noreferrer"><img src={youtubeIcon} alt="YouTube" /></a></li>
+              <li><a href="https://www.facebook.com" target="_blank" rel="noreferrer" aria-label="Visit our Facebook page"><img src={facebookIcon} alt="Facebook" /></a></li>
+              <li><a href="https://www.instagram.com" target="_blank" rel="noreferrer" aria-label="Visit our Instagram page"><img src={instagramIcon} alt="Instagram" /> </a></li>
+              <li><a href="https://www.twitter.com" target="_blank" rel="noreferrer" aria-label="Visit our Twitter page"><img src={twitterIcon} alt="Twitter" /> </a></li>
+              <li><a href="https://www.linkedin.com" target="_blank" rel="noreferrer" aria-label="Visit our LinkedIn page"><img src={linkedinIcon} alt="LinkedIn" /> </a></li>
+              <li><a href="https://www.youtube.com" target="_blank" rel="noreferrer" aria-label="Visit our Youtube page"><img src={youtubeIcon} alt="YouTube" /></a></li>
             </ul>
           </div>
         </div>

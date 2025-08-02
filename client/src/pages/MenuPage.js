@@ -81,16 +81,16 @@ const MenuPage = () => {
         <div className="menu-page-category-buttons">
           {categories.map(category => (
             <button 
-            key={category} className={`menu-page-category-btn ${activeCategory === category ? 'active' : ''}`} onClick={() => {setActiveCategory(category);}}>
+            key={category} className={`menu-page-category-btn ${activeCategory === category ? 'active' : ''}`} onClick={() => {setActiveCategory(category);}} aria-label={`Show ${category} items`} aria-pressed={activeCategory === category}>
               {category}
             </button>
           ))}
         </div>
       </section>
 
-      <section className="menu-page-items">
+      <section className="menu-page-items" aria-labelledby="menu-items-heading">
         {loading ? (
-          <div className="menu-page-loading">Loading menu items...</div>
+          <div className="menu-page-loading" aria-live="polite">Loading menu items...</div>
         ) : (
           <div className="menu-page-items-grid">
             {filteredItems.map(item => (
@@ -118,7 +118,7 @@ const MenuPage = () => {
       </section>
 
       {popup && (
-        <div className="menu-page-popup">
+        <div className="menu-page-popup" role="alert">
           <span onClick={() => setPopup(false)} className="menu-page-popup-close">&times;</span>
           <p>Order feature coming soon!</p>
         </div>

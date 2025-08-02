@@ -43,74 +43,39 @@ const Header = () => {
           />
         </Link>
       </div>
-      <nav className={`nav-links ${menuOpen ? "open" : ""}`}>
-        <Link 
-          to="/" 
-          className={`nav-link ${isActive('/') ? 'active-link' : ''}`}
-        >
-          Home
-        </Link>
-        <button 
-          className={`nav-button ${location.hash === '#about' ? 'active-link' : ''}`}
-          onClick={() => handleNavClick("about")}
-        >
-          About
+      <nav className={`nav-links ${menuOpen ? "open" : ""}`} aria-label="Main navigation">
+        <Link to="/" className={`nav-link ${isActive('/') ? 'active-link' : ''}`}> Home </Link>
+        <button className={`nav-button ${location.hash === '#about' ? 'active-link' : ''}`} onClick={() => handleNavClick("about")}> 
+          About 
         </button>
         <div className="dropdown">
-          <button 
-            className={`dropbtn ${isActive('/menu') ? 'active-link' : ''}`}
-            style={{ fontSize: '0.9rem', fontFamily: 'Karla, sans serif' }}
-          >
+          <button className={`dropbtn ${isActive('/menu') ? 'active-link' : ''}`} style={{ fontSize: '0.9rem', fontFamily: 'Karla, sans serif' }}>
             Menu ▾
           </button>
           <div className="dropdown-content">
-            <button 
-              className={`nav-button ${location.search.includes('Starters') ? 'active-link' : ''}`}
-              onClick={() => handleMenuCategoryClick("Starters")}
-            >
+            <button className={`nav-button ${location.search.includes('Starters') ? 'active-link' : ''}`} onClick={() => handleMenuCategoryClick("Starters")}>
               Starters
             </button>
-            <button 
-              className={`nav-button ${location.search.includes('Mains') ? 'active-link' : ''}`}
-              onClick={() => handleMenuCategoryClick("Mains")}
-            >
+            <button className={`nav-button ${location.search.includes('Mains') ? 'active-link' : ''}`} onClick={() => handleMenuCategoryClick("Mains")}>
               Mains
             </button>
-            <button 
-              className={`nav-button ${location.search.includes('Desserts') ? 'active-link' : ''}`}
-              onClick={() => handleMenuCategoryClick("Desserts")}
-            >
+            <button className={`nav-button ${location.search.includes('Desserts') ? 'active-link' : ''}`} onClick={() => handleMenuCategoryClick("Desserts")}>
               Desserts
             </button>
-            <button 
-              className={`nav-button ${location.search.includes('Drinks') ? 'active-link' : ''}`}
-              onClick={() => handleMenuCategoryClick("Drinks")}
-            >
+            <button className={`nav-button ${location.search.includes('Drinks') ? 'active-link' : ''}`} onClick={() => handleMenuCategoryClick("Drinks")}>
               Drinks
             </button>
           </div>
         </div>
-        <button 
-          className={`nav-button ${location.hash === '#testimonials' ? 'active-link' : ''}`}
-          onClick={() => handleNavClick("testimonials")}
-        >
+        <button className={`nav-button ${location.hash === '#testimonials' ? 'active-link' : ''}`} onClick={() => handleNavClick("testimonials")}>
           Review
         </button>
-        <button 
-          id="order-online" 
-          className={`nav-button ${location.hash === '#special' ? 'active-link' : ''}`}
-          onClick={() => handleNavClick("special")}
-        >
-          Specials!!
+        <button id="order-online" className={`nav-button ${location.hash === '#special' ? 'active-link' : ''}`} onClick={() => handleNavClick("special")}> 
+          Specials!! 
         </button>
-        <Link 
-          to="/reservation" 
-          className={`reservation ${isActive('/reservation') ? 'active-link' : ''}`}
-        >
-          Reservation
-        </Link>
+        <Link to="/reservation" className={`reservation ${isActive('/reservation') ? 'active-link' : ''}`}> Reservation </Link>
       </nav>
-      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)}>☰</div>
+      <div className="hamburger" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="nav-links" aria-label="Toggle Navigation Menu">☰</div>
     </header>
   );
 };

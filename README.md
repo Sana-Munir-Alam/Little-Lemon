@@ -55,6 +55,14 @@ Little Lemon Restaurant is a modern single-page application (SPA) that allows us
 - Middleware is used for request validation and securing HTTP headers
 - Environment variables are used to store sensitive config values (e.g., DB URI, server port)
 
+## Backend API Dependencies
+
+These packages are used to build and secure the RESTful API for handling data interactions with MongoDB, including routes for creating (POST), reading (GET), and deleting (DELETE) data.
+
+bash
+npm install express mongoose cors dotenv nodemailer
+npm install helmet express-rate-limit express-validator
+
 ## Developer Notes
 
 This project demonstrates how front-end and back-end technologies can be integrated into a seamless full-stack application. It emphasizes:

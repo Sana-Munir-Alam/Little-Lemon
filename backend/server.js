@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL || 'http://localhost:3000',
-    'https://your-frontend-app.onrender.com' // Add your Render frontend URL here
+    'https://little-lemon-frontend.onrender.com' // Will update after frontend deploy
   ],
   credentials: true
 }));

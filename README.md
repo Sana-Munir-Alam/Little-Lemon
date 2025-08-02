@@ -59,8 +59,8 @@ Little Lemon Restaurant is a modern single-page application (SPA) that allows us
 
 These packages are used to build and secure the RESTful API for handling data interactions with MongoDB, including routes for creating (POST), reading (GET), and deleting (DELETE) data.
 
-bash
-npm install express mongoose cors dotenv nodemailer
+bash<br>
+npm install express mongoose cors dotenv nodemailer <br>
 npm install helmet express-rate-limit express-validator
 
 ## Developer Notes

@@ -7,6 +7,17 @@ It is a full-stack restaurant reservation application built using React for the 
 
 [Live Demo](https://little-lemon-2hrf.onrender.com/)
 https://little-lemon-2hrf.onrender.com/
+## Important Note About Loading Time
+
+This project is hosted on [Render](https://render.com) using their **free tier** service.
+As a result:
+- The backend server goes to **sleep after periods of inactivity**.
+- When visiting the site for the **first time** or after it has been idle, it may take **1–2 minutes** for the server to wake up and respond.
+- During this time, actions like **submitting a reservation or checking existing ones may seem unresponsive** — this is expected.
+- Once the server is awake, all features will work smoothly and respond quickly.
+
+> Please be patient during the initial load — this delay happens only once after the server has been asleep.
+Thank you for your understanding!
 
 ## Project Overview
 

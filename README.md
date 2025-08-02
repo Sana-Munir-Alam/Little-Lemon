@@ -6,6 +6,7 @@ It is a full-stack restaurant reservation application built using React for the 
 ## Visit the Application
 
 [Live Demo](https://little-lemon-2hrf.onrender.com/)
+https://little-lemon-2hrf.onrender.com/
 
 ## Project Overview
 

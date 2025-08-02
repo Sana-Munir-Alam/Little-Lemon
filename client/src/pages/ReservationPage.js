@@ -108,7 +108,7 @@ const Reservation = () => {
     if (validateStep()) {
       setIsLoading(true);
       try {
-        const response = await fetch('api/reservations', {
+        const response = await fetch('https://little-lemon-backend-j1dg.onrender.com/api/reservations', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

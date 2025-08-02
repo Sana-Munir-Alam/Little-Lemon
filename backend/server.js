@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-// const nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 const { body, validationResult } = require('express-validator');
 
 // Initialize Express app
@@ -15,11 +15,7 @@ const app = express();
 // ======================
 app.use(helmet());
 app.use(cors({
-  origin: [
-    process.env.FRONTEND_URL || 'http://localhost:3000',
-    'https://little-lemon-frontend-mhxf.onrender.com'// Will update after frontend deploy
-  ],
-  credentials: true
+  origin: process.env.FRONTEND_URL || 'http://localhost:3000'
 }));
 
 const limiter = rateLimit({
@@ -89,7 +85,7 @@ const Reservation = mongoose.model('Reservation', {
       const [year, month, day] = this.date.split('-').map(Number);
       const [hours, minutes] = this.time.split(':').map(Number);
       const reservationTime = new Date(year, month - 1, day, hours, minutes);
-      return new Date(reservationTime.getTime() + 2 * 60 * 60 * 1000); // 2 hr buffer (data deleted aftr 2hrs reservation time)
+      return new Date(reservationTime.getTime() + 2 * 60 * 1000); // +2 min to make it 2 hr * by 60
     }
   }
 });
@@ -100,13 +96,13 @@ Reservation.schema.index({ expireAt: 1 }, { expireAfterSeconds: 0 });
 // ======================
 // Email Configuration
 // ======================
-// const transporter = nodemailer.createTransport({
-//   service: process.env.EMAIL_SERVICE || 'Gmail',
-//   auth: {
-//     user: process.env.EMAIL_USER,
-//     pass: process.env.EMAIL_PASS
-//   }
-// });
+const transporter = nodemailer.createTransport({
+  service: process.env.EMAIL_SERVICE || 'Gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 // ======================
 // API Endpoints
@@ -147,7 +143,7 @@ app.post('/api/reservations', [
       // Set email to null if not provided
       email: req.body.email && req.body.email.trim() !== "" 
         ? req.body.email 
-        : ''
+        : 'no-email@example.com'
     };
 
     const reservation = new Reservation(sanitizedData);
@@ -237,6 +233,10 @@ app.delete('/api/reservations/:id', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('Little Lemon Reservation API is running');
+});
+
 // ======================
 // Error Handling
 // ======================
@@ -254,7 +254,7 @@ app.use((req, res) => {
 // ======================
 const PORT = process.env.PORT || 3001;
 const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port http://localhost:${PORT}`);
 });
 
 process.on('SIGTERM', () => {

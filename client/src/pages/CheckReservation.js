@@ -49,7 +49,7 @@ const CheckReservation = () => {
     
     setIsLoading(true);
     try {
-      const response = await fetch(`http://localhost:3001/api/reservations/${reservationToCancel._id}`, {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/reservations/${reservationToCancel._id}`, {
         method: 'DELETE'
       });
       
@@ -102,7 +102,7 @@ const CheckReservation = () => {
         ? `email=${trimmedValue}` 
         : `phone=${trimmedValue.replace(/\D/g, '')}`;
 
-      const response = await fetch(`http://localhost:3001/api/reservations?${query}`);
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/reservations?${query}`);
       const data = await response.json();
 
       if (data.length === 0) {
@@ -172,7 +172,7 @@ const CheckReservation = () => {
         />
       </div>
 
-      <button onClick={handleSearch} className="search-check-button" disabled={isLoading}>{isLoading ? 'Searching...' : 'Search'}</button>
+      <button onClick={handleSearch} className="search-check-button" disabled={isLoading} aria-busy={isLoading}>{isLoading ? 'Searching...' : 'Search'}</button>
 
       {error && <p className="error-message-check">{error}</p>}
           
@@ -214,14 +214,14 @@ const CheckReservation = () => {
               <>
                 <p>Are you sure you want to cancel this reservation?</p>
                 <div className="modal-buttons-container">
-                  <button onClick={handleCancelReservation} className="confirm-button-check" disabled={isLoading}>
+                  <button onClick={handleCancelReservation} className="confirm-button-check" disabled={isLoading} aria-busy={isLoading}>
                     {isLoading ? 'Processing...' : 'Yes, Cancel'}
                   </button>
                   <button 
                     onClick={() => {
                       setShowCancelModal(false);
                       setReservationToCancel(null);
-                    }} className="close-button-check" disabled={isLoading}>
+                    }} className="close-button-check" disabled={isLoading} aria-busy={isLoading}>
                     No, Keep It
                   </button>
                 </div>

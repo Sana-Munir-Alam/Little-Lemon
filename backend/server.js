@@ -85,7 +85,7 @@ const Reservation = mongoose.model('Reservation', {
       const [year, month, day] = this.date.split('-').map(Number);
       const [hours, minutes] = this.time.split(':').map(Number);
       const reservationTime = new Date(year, month - 1, day, hours, minutes);
-      return new Date(reservationTime.getTime() + 2 * 60 * 60 * 1000); // 2 hr buffer (data deleted aftr 2hrs reservation time)
+      return new Date(reservationTime.getTime() + 2 * 60 * 1000); // +2 min to make it 2 hr * by 60
     }
   }
 });
@@ -143,7 +143,7 @@ app.post('/api/reservations', [
       // Set email to null if not provided
       email: req.body.email && req.body.email.trim() !== "" 
         ? req.body.email 
-        : ''
+        : 'no-email@example.com'
     };
 
     const reservation = new Reservation(sanitizedData);
@@ -233,6 +233,10 @@ app.delete('/api/reservations/:id', async (req, res) => {
   }
 });
 
+app.get('/', (req, res) => {
+  res.send('Little Lemon Reservation API is running');
+});
+
 // ======================
 // Error Handling
 // ======================
@@ -250,7 +254,7 @@ app.use((req, res) => {
 // ======================
 const PORT = process.env.PORT || 3001;
 const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server running on port http://localhost:${PORT}`);
 });
 
 process.on('SIGTERM', () => {

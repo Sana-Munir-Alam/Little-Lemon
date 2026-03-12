@@ -7,8 +7,8 @@ const Hero = () => {
 
   return (
     <section id="hero" className="hero">
-        <div className="hero-text">
-            <h1>Little Lemon</h1>
+        <article className="hero-text">
+            <h1 id="hero-heading">Little Lemon</h1>
             <h2>Chicago</h2>
             <p>Taste the Mediterranean This Summer</p>
             <p>Fresh, seasonal dishes inspired by Italy, Greece & Turkey
@@ -19,9 +19,9 @@ const Hero = () => {
             <button onClick={() => navigate('/menu')}>Explore Menu</button>
             <button onClick={() => navigate('/reservation')}>Reservation</button>
             </div>
-        </div>
+        </article>
         <div className="hero-image">
-            <img src="https://alchemiq.com/wp-content/uploads/2022/11/Mediterranean-Food-1.jpg" alt="Mediterranean Food" />
+            <img src="https://alchemiq.com/wp-content/uploads/2022/11/Mediterranean-Food-1.jpg" alt="Mediterranean Food" aria-label="Meditranean Food" />
         </div>
     </section>
   );

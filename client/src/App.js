@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom"; //BrowserRouter changed to HashRouter
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import SpecialMenu from "./components/SpecialMenu";
@@ -48,7 +48,7 @@ function CheckReservationPage(){
 }
 function App() {
   return (
-    <Router>
+     <Router>
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
